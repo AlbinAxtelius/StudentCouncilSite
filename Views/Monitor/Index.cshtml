@@ -1,0 +1,37 @@
+﻿@model ElevkårSida.Models.MonitorModel
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/Monitor.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="container">
+        @foreach (var item in Model.PostModels)
+        {
+            <content class="newsBox">
+                <p>
+                    @item.PostContent
+                </p>
+                @if (item.PostFile.ToString() != "")
+                {
+                    <img class="postImage" src="~/@item.PostFile" />
+                }
+                <span>@item.Date.Remove(item.Date.Length - 3, 3)</span>
+            </content>
+        }
+        <footer>
+            <img src="~/Content/images/download.jpg" />
+            <div>
+                <span>Tullängens Elevkår | Nyheter</span>
+                <span>Finns också online på www.infomedia.orebro.se/tge</span>
+            </div>
+        </footer>
+    </div>
+    <script src="~/Scripts/MonitorScript.js"></script>
+</body>
+</html>

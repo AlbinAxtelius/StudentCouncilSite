@@ -1,0 +1,31 @@
+﻿@model ElevkårSida.Models.FeedbackModel
+@{
+    ViewBag.Title = "Feedback";
+}
+<div id="Feedback">
+    @using (Html.BeginForm("Feedback", "Forum", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.Title, new { @placeholder = "Titel", type = "Text" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "Danger" })
+
+        <textarea name="FeedbackText"
+                  placeholder="Feedback / idé"
+                  onkeyup="verifyText()"
+                  required>
+        </textarea>
+        <span id="CurrentWordCount">0/250</span>
+        <label id="AnonLabel">
+            Anonym
+            <input type="checkbox" name="Hidden" onchange="toggleAnon(this)" />
+            <span>
+                <i class="material-icons checkbox">check_box_outline_blank</i>
+                <i class="material-icons checkbox">check_box</i>
+            </span>
+        </label>
+        <span id="Author">
+            @Html.TextBoxFor(m => m.Author, new { @placeholder = "Ditt namn", type = "Text" })
+            @Html.ValidationMessageFor(m => m.Author, "", new { @class = "Danger" })
+        </span>
+        <input type="submit" value="Skicka" />
+    }
+</div>

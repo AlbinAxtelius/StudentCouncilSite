@@ -1,0 +1,34 @@
+﻿@model ElevkårSida.Models.AdminModel
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="AdminFeedback">
+    @if (Model.FeedbackModels != null)
+    {
+        <ul>
+            @foreach (var item in Model.FeedbackModels)
+            {
+                <li>
+                    <h1>@item.Title</h1>
+                    <p>@item.FeedbackText</p><span>
+                        Author:
+                        @if (item.Author == null || item.Author == " ")
+                        {
+                            <Text>Anonym</Text>
+                        }
+                        else
+                        {
+                            @item.Author
+                        }
+                    </span>
+                    <a href="@Url.Action("Archive","Admin", new { id = item.FeedbackId })"><i class="material-icons">archive</i>Arkivera</a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <span>Ingen ny feedback</span>
+    }
+</div>

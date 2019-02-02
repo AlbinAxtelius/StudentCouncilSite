@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | Elevkåren</title>
+    <link href="~/Content/css/Styles.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+var RootUrl = '@Url.Content("~/")';
+    </script>
+</head>
+<body>
+    <div id="menu">
+        @if (Session["LoginId"] == null)
+        {
+            <a id="AdminLogin" href="@Url.Action("Index","Login")">Logga in (Admin)</a>
+        }
+        <img src="~/Content/images/download.jpg" />
+        <ul>
+            @if (Session["LoginId"] == null)
+            {
+                <li><a href="@Url.Action("Index","Forum")">Hem</a></li>
+                <li><a href="@Url.Action("Feedback","Forum")">Feedback</a></li>
+                <li><a href="https://ebas.gymnasiet.sverigeselevkarer.se/signups/index/500">Gå med</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("Index","Forum")">Hem</a></li>
+                <li><a href="@Url.Action("Index","Admin")">Dashboard</a></li>
+                <li><a href="@Url.Action("Logout","Login")">Logga ut</a></li>
+            }
+        </ul>
+    </div>
+    <div id="container" class="adminContainer">
+        <header id="AdminHeaderNotShadow">
+            <div id="hamMenuIcon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1>@ViewBag.Title</h1>
+            <div id="AdminHeader">
+                <a href="@Url.Action("Index", "Admin")"><i class="material-icons">arrow_back</i><span>Tillbaka</span></a>
+            </div>
+        </header>
+
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/Functions.js"></script>
+</body>
+</html>
+

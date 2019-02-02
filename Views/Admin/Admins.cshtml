@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Admins";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="CustomAlert"></div>
+<div id="Admins">
+    <h2>Lägg till admin</h2>
+    <div>
+        <input id="Username" placeholder="Användarnamn" type="text" autocomplete="off" />
+        <input id="Password" placeholder="Lösenord" type="password" autocomplete="new-password" />
+        <button onclick="addAdmin()">Lägg till</button>
+    </div>
+    <h2>Administratörer</h2>
+    <ul id="AdminsList"></ul>
+</div>
+<script src="~/Scripts/AdminsScript.js"></script>

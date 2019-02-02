@@ -1,0 +1,42 @@
+﻿@model ElevkårSida.Models.ForumModel
+@{
+    ViewBag.Title = "Hem";
+}
+
+@if (Session["LoginId"] != null)
+{
+    <form id="newPost" action="@Url.Action("CreatePost","Forum")" method="post" enctype="multipart/form-data">
+        <textarea name="PostContent" placeholder="Nytt inlägg" maxlength="500"></textarea>
+        <div id="uploadController">
+            <div id="uploadPicContainer">
+                <label id="uploadPic">
+                    <input type="file" accept="image/*" name="postFile" onchange="loadFile(event)" />
+                    Lägg till bild
+                </label>
+                <img id="output" />
+            </div>
+            <input type="submit" value="Lägg up" />
+        </div>
+    </form>
+}
+<content id="posts">
+    @foreach (var item in Model.PostModels)
+    {
+        <div class="postItem">
+            @if (Session["LoginId"] != null)
+            {
+                <a href="@Url.Action("Delete","Forum", new { id = item.PostId })"><i class="material-icons">close</i>Ta bort</a>
+            }
+            @if (item.PostFile.ToString() != "")
+            {
+                <img src="~/@item.PostFile" />
+            }
+            <p>@item.PostContent</p>
+            <div class="likeController">
+                <span>
+                    Postad: @item.Date.Remove(item.Date.Length - 3, 3)
+                </span>
+            </div>
+        </div>
+    }
+</content>

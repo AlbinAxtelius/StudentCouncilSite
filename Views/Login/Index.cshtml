@@ -1,0 +1,18 @@
+﻿@model ElevkårSida.Models.UserModel
+@{
+    ViewBag.Title = "Logga in";
+}
+<div id="Login">
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username)
+        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "Danger" })
+
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { type = "Password" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "Danger" })
+        <span class="Danger">@ViewBag.LoginResult</span>
+        <input type="submit" value="Logga in" />
+    }
+</div>  

@@ -1,0 +1,74 @@
+﻿$Blue: #2D314B;
+
+body {
+    margin: 0;
+    font-family: Verdana;
+
+    #container {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+
+        .newsBox {
+            position: fixed;
+            width: 90vw;
+            max-height: 70vh;
+            padding: 20px;
+            box-shadow: 0 0 10px black;
+            top: 40%;
+            transform: translate(-50%,-50%);
+            left: -100vw;
+            transition: all .5s ease-in-out;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            min-height: 460px;
+
+            img {
+                align-self:center;
+            }
+
+            p {
+                font-size: 2.2em;
+                white-space: pre-line;
+                padding: 10px;
+                margin: 0;
+                margin-top: -1em;
+            }
+
+            span {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                padding: 0 40px;
+            }
+        }
+
+        footer {
+            border-top: solid 50vh $Blue;
+            width: 100vw;
+            display: flex;
+            align-items: flex-end;
+            height: 50vh;
+
+            img {
+                width: 200px;
+            }
+
+            div {
+                margin-bottom: 45px;
+
+                span {
+                    font-size: 2em;
+                    display: block;
+
+                    &:first-child {
+                        font-size: 2.2em;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
